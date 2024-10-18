@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Drizzle
+drizzle/
+
+# Build output
+dist/
+build/
+out/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+
+# IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/

@@ -1,0 +1,40 @@
+{
+  "name": "mse_backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:sync": "drizzle-kit sync",
+    "db:pull": "drizzle-kit pull"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@apollo/server": "^4.11.0",
+    "@neondatabase/serverless": "^0.10.1",
+    "apollo-server-express": "^3.13.0",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "drizzle-graphql": "^0.8.5",
+    "drizzle-orm": "^0.35.1",
+    "express": "^4.21.1",
+    "graphql": "^16.9.0",
+    "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/pg": "^8.11.10",
+    "drizzle-kit": "^0.26.2",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  }
+}
