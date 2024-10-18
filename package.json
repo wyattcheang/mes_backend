@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.ts",
+    "start": "ts-node src/index.ts",
     "db:generate": "drizzle-kit generate",
     "db:sync": "drizzle-kit sync",
     "db:pull": "drizzle-kit pull"

@@ -66,7 +66,6 @@ const main = async () => {
 
   app.use(express.json());
   app.use("/graphql", expressMiddleware(server));
-
   const httpServer = http.createServer(app);
 }
 
