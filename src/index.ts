@@ -64,6 +64,11 @@ const server = new ApolloServer({ schema });
 const main = async () => {
   await server.start();
 
+  app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  }));
+
   app.use(express.json());
   app.use("/graphql", expressMiddleware(server));
   const httpServer = http.createServer(app);
