@@ -11,55 +11,22 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import express, { Request, Response } from "express";
 import http from 'http';
+import path from 'path';
 import cors from 'cors';
 import { int } from "drizzle-orm/mysql-core";
 import { introspectionFromSchema } from "graphql";
 
 dotenv.config();
 
+const catalogRouter = require("./routes/catalog"); // Import routes for "catalog" area of site
+const compression = require("compression");
+const helmet = require("helmet");
 const app = express();
 const port = process.env.PORT || 3000;
 
 async function getAllProduct() {
   return await db.query.products.findMany(); // Added return statement
 }
-
-// // Define your GraphQL schema using the gql template literal
-// const typeDefs = `
-//   type Product {
-//     productId: ID!
-//     productName: String!
-//     description: String!
-//     createdAt: String!
-//     updatedAt: String!
-//   }
-
-//   type Query {
-//     products: [Product!]!
-//   }
-
-//   type Mutation {
-//     addProduct(productName: String!, description: String!): String!
-//   }
-// `;
-
-// // Define your resolvers
-// const resolvers = {
-//   Query: {
-//     products: async () => {
-//       return await db.query.products.findMany();
-//     },
-//   },
-//   Mutation: {
-//     addProduct: async (_: any, { productName, description }: { productName: string; description: string }) => {
-//       await db.insert(schema.products).values({
-//         productName,
-//         description,
-//       }).execute();
-//       return "Product added successfully"; // Return success message
-//     },
-//   },
-// };
 
 const { schema } = buildSchema(db);
 const server = new ApolloServer({ schema, introspection: true });
@@ -71,7 +38,16 @@ const main = async () => {
     credentials: true,
   }));
 
+  app.use(compression()); // Compress all routes
+  app.use(express.static(path.join(__dirname, "public")));
   app.use(express.json());
+  app.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"],
+      },
+    }),
+  );
   app.use("/graphql", expressMiddleware(server));
   const httpServer = http.createServer(app);
 }
