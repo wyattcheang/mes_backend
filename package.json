@@ -8,7 +8,9 @@
     "start": "ts-node src/index.ts",
     "db:generate": "drizzle-kit generate",
     "db:sync": "drizzle-kit sync",
-    "db:pull": "drizzle-kit pull"
+    "db:pull": "drizzle-kit pull",
+    "seed:init": "ts-node ./src/seeds/init.ts",
+    "seed:prod": "NODE_ENV=production node ./build/src/seeds/init.js"
   },
   "keywords": [],
   "author": "",
