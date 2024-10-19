@@ -1,2 +1,2 @@
-// declare module "express";
-// declare module "cors";
+declare module "@types/express";
+declare module "@types/cors";
