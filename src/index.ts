@@ -12,6 +12,8 @@ import { expressMiddleware } from '@apollo/server/express4';
 import express, { Request, Response } from "express";
 import http from 'http';
 import cors from 'cors';
+import { int } from "drizzle-orm/mysql-core";
+import { introspectionFromSchema } from "graphql";
 
 dotenv.config();
 
@@ -60,7 +62,7 @@ async function getAllProduct() {
 // };
 
 const { schema } = buildSchema(db);
-const server = new ApolloServer({ schema });
+const server = new ApolloServer({ schema, introspection: true });
 const main = async () => {
   await server.start();
 
