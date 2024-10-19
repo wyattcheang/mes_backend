@@ -26,7 +26,7 @@ async function getAllProduct() {
 }
 
 const { schema } = buildSchema(db);
-const server = new ApolloServer({ schema, introspection: true });
+const server = new ApolloServer({ schema, introspection: process.env.NODE_ENV === "development" });
 const main = async () => {
   await server.start();
 
