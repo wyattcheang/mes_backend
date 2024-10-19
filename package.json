@@ -8,9 +8,7 @@
     "start": "ts-node src/index.ts",
     "db:generate": "drizzle-kit generate",
     "db:sync": "drizzle-kit sync",
-    "db:pull": "drizzle-kit pull",
-    "seed:init": "ts-node ./src/seeds/init.ts",
-    "seed:prod": "NODE_ENV=production node ./build/src/seeds/init.js"
+    "db:pull": "drizzle-kit pull"
   },
   "keywords": [],
   "author": "",
@@ -30,7 +28,9 @@
     "graphql": "^16.9.0",
     "helmet": "^8.0.0",
     "pg": "^8.13.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
