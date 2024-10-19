@@ -18,7 +18,6 @@ import { introspectionFromSchema } from "graphql";
 
 dotenv.config();
 
-const catalogRouter = require("./routes/catalog"); // Import routes for "catalog" area of site
 const compression = require("compression");
 const helmet = require("helmet");
 const app = express();
