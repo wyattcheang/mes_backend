@@ -14,9 +14,6 @@ import http from 'http';
 import path from 'path';
 import cors from 'cors';
 
-import { int } from "drizzle-orm/mysql-core";
-import { introspectionFromSchema } from "graphql";
-
 dotenv.config();
 
 const compression = require("compression");
